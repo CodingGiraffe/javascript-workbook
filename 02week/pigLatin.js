@@ -19,8 +19,8 @@ function findFirstVowel(word) {
 //make condition of how to act if a word does or does not have a vowel
   if (vowel.indexOf(word[i]) !== -1) {
   return i;
-  }
-  }
+      }
+    }
   }
 
 //make a varible for pig latin word
@@ -34,23 +34,8 @@ const pigLatin = (word)  => {
   return word.substring(firstVowel) + word.substring(0, firstVowel) + "ay";
   } else {
   return word + "yay";
+    }
   }
-  }
-
-
-// 1. if the word starts with a vowel, add yay to end
-//2. if the word has a vowel: 
-  //find the first vowel
-  //split word into two parts before the first vowel
-  //   - starting at the begining and stopping just before the first vowel
-  //   - starting at the first vowel to the end of the word
-  //c. make a new word, where you flip the 2 parts
-  //d. add "ay" to the end of the new word
-
-  
-  
-
-
 
 
 const getPrompt = () => {
