@@ -29,7 +29,7 @@ const pigLatin = (word)  => {
   word = word.toLowerCase().trim();
 //set loop to search for first vowel in a word
   let firstVowel = findFirstVowel(word);
-  //set conditions to split word and add "ay" at the end
+  //set conditions to split word and add "ay" at the end or "yay" to end if no vowel
   if (firstVowel > 0) {
   return word.substring(firstVowel) + word.substring(0, firstVowel) + "ay";
   } else {
