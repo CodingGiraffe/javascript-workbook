@@ -22,25 +22,65 @@ function printBoard() {
   console.log('  ---------');
   console.log('2 ' + board[2].join(' | '));
 }
-
+//should return true if player won on any row
 function horizontalWin() {
-  // Your code here
+for(let i = 0; i < board.length; i++) {
+  if(board[i][0] != "" && board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
+    return true;
+  }
 }
-
+}
+//should return true if player won on any column
 function verticalWin() {
-  // Your code here
+  for(let j = 0; j < board.length; j++) {
+    if(board[0][j] != "" && board[0][j] == board[1][j] && board[1][j] == board[2][j]) {
+      return true;
+    }
 }
-
+}
+//should return true if player won on any diagonal
 function diagonalWin() {
-  // Your code here
+  if(board[0][0] != "" && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+      return true;
+  }
+  if(board[0][2] != "" && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+      return true;
+  }
+}
+//return true if they won
+//if any of top three functions return true, this should return true
+function checkForWin() {
+  //checking rows
+  for(var i = 0; i < board.length; i++) {
+    if(board[i][0] != "" && board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
+      return true;
+    }      
+  }
+  //checking columns
+  for(var j = 0; j < board.length; j++) {
+    if(board[0][j] != "" && board[0][j] == board[1][j] && board[1][j] == board[2][j]) {
+      return true;
+    }
+  }
+  //checking across
+  if(board[0][0] != "" && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+      return true;
+  }
+  if(board[0][2] != "" && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+      return true;
+  }
+  //if reached here, no winners
+  return false;
 }
 
-function checkForWin() {
-  // Your code here
-}
 
 function ticTacToe(row, column) {
-  // Your code here
+  board[row][column] = playerTurn
+  if (playerTurn === 'X') {
+    playerTurn = 'O' 
+} else {
+    playerTurn = 'X' 
+};
 }
 
 function getPrompt() {
@@ -89,5 +129,4 @@ if (typeof describe === 'function') {
 } else {
 
   getPrompt();
-
 }
