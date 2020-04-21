@@ -23,8 +23,8 @@ function movePiece(startStack, endStack) {
   
 //need to pop it from one and push it to another  
 
-let movingPiece = stacks[startStack].pop();
-stacks[endStack].push(movingPiece);
+let playingPiece = stacks[startStack].pop();
+stacks[endStack].push(playingPiece);
 }
 
 function isLegal(startStack, endStack) {
@@ -35,8 +35,11 @@ function isLegal(startStack, endStack) {
 
   //compare last/top number from start stack to last/top number on end stack
   if (fromStack > 0 && toStack.length == 0) {
+    movePiece(startStack, endStack)
+    console.log("Legal Move!")
     return true
   } else {
+    console.log("Illegal Move!")
     return false
   }
 }
@@ -51,9 +54,8 @@ function checkForWin() {
  
 
 function towersOfHanoi(startStack, endStack) {
-  // isLegal -- movePiece -- checkForWin
   isLegal(startStack, endStack);
-  checkForWin(endStack)
+  checkForWin()
 }
 
 function getPrompt() {
