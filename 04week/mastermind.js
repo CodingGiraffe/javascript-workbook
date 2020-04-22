@@ -29,48 +29,47 @@ function getRandomInt(min, max) {
 }
 
 function generateHint(guess) {
-  solution = 'abcd'
-  guessArray = guess.split()
-  solutionArray = solution.split()
-  correctLetterLocations = 0
+  let solutionArray = solution.split("");
+  let guessArray = guess.split("");
+  //find correct letters in guess
+  let correctLetterLocations = 0;
   
-
-  for(let i=0; i < solutionArray.length; i++) {
-    if(solutionArray[i] == guessArray[i]){
-      correctLetterLocations++;
-    } else {
-      //do nothing
-    }
+  for (let i = 0; i < solutionArray.length; i++) {
+  if (solutionArray[i] === guessArray[i]) {
+  correctLetterLocations++;
+  solutionArray[i] = null;
   }
-      return correctLetterLocations;
-
-  for(let i=0; i < solutionArray.length; i++) {
-    if(solutionArray.indexOf[i] == guess.indexOf[i]){
-      correctLetterLocations++;
-    } else {
-      //do nothing
-    }
   }
-      return correctLetterLocations;
-}
-
-// Let hint = guess.forEach((element, index) => {
-//   if(solutionArray(element, index) = guessArray(element, index))
+  //find location of correct letters
+  let correctLetters = 0;
   
-//   )}  
-
-
-
-function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
+  for (let i = 0; i < solutionArray.length; i++) {
+  let targetIndex = solutionArray.indexOf(guessArray[i]);
+  if (targetIndex > -1) {
+  correctLetters++;
+  solutionArray[i] = null;
+  }
+  }
+  return correctLetterLocations - correctLetters
+  }
   
-
-  if(guess === solution) {
-    return 'You guessed it!'
+  function mastermind(guess) {
+  // solution = "abcd"; // Comment this out to generate a random solution
+  if (guess == solution) {
+  board = [];
+  return "You guessed it!";
   } else {
-    return false
+  var hint = generateHint(guess);
+  board.push(guess + hint);
+  //only allow 10 tries
+  if (board.length >= 10) {
+  board = [];
+  return "You ran out of turns! The soultion was: " + solution;
+  } else {
+  return "Guess again.";
   }
-}
+  }
+  }
 
 
 function getPrompt() {
