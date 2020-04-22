@@ -59,7 +59,7 @@ function generateHint(guess) {
   board = [];
   return "You guessed it!";
   } else {
-  var hint = generateHint(guess);
+  let hint = generateHint(guess);
   board.push(guess + hint);
   //only allow 10 tries
   if (board.length >= 10) {
