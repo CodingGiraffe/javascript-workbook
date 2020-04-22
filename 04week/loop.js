@@ -40,7 +40,7 @@ let arraysOfPersons = [
 console.log("*************************************")
 //create a for in loop that console.log value associated with the key birthDate if the birth year is an odd number
 for(const birthDate in arraysOfPersons) {
-    if(birthDate % 2 ==! 0)
+    if(birthDate % 2 !== 0)
     console.log(birthDate)
 }
 
