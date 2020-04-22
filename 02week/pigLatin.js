@@ -38,6 +38,17 @@ const pigLatin = (word)  => {
   }
 
 
+let input = document.querySelector('input')
+let button = document.querySelector('button')
+
+button.addEventListener('click', function(){
+  console.log("someone clicked")
+})
+
+
+
+
+
 const getPrompt = () => {
   rl.question('word ', (answer) => {
     console.log( pigLatin(answer) );
