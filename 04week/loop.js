@@ -60,6 +60,6 @@ console.log(filteredByGender)
 console.log("*************************************")
 //use .filter() to filter the people in array born before Jan 1, 1990
 
-let beforeJanuary = arraysOfPersons.filter(obj => obj.birthDate > "Jan 1, 1990")
+let beforeJanuary = arraysOfPersons.filter(obj => obj.birthDate < "Jan 1, 1990")
 
 console.log(beforeJanuary)
