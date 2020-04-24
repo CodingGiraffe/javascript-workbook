@@ -10,6 +10,57 @@ let jobTypes = {
 };
 
 // Your code here
+//constructor should take in as input: name, their job, skill
+//have attribute of a "ship", the one they are in
+class CrewMember {
+  constructor (name, job, specialSkill,) {
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+  }
+    //this method should ask THIS crewmember to the ship being passed in
+    //an entire ship instance is passed in, not just the name
+    //the entire crewmember is added to the ship's array of crew
+    enterShip(ship){
+      ship.crew.push(this)
+    }
+  
+}
+
+//create Ship class with name, type, and abililty
+//have list of crew that starts out empty
+class Ship {
+  constructor(name, type, ability){
+    this.name = name
+    this.type = type
+    this.ability = ability
+    this.crew = []
+  }
+
+
+//ship should have a "missionStatement()"
+      //if there is a crew member that can activate it, it should return the ships ability if there is a crew member whose job matches up with the ship's type otherwise it should
+      // return "Can't perform a mission yet."
+
+  missionStatement() {
+    if (this.crew.length <= 0) {
+      return "Can't perform a mission yet."
+    } else (this.crew.length >= 1) 
+      return this.ability
+    
+  }
+}
+
+let crewMember1 = new CrewMember("Rick Martinez", "pilot", "chemistry");
+let crewMember2 = new CrewMember("Commander Lewis", "commander", "geology");
+let mav = new Ship("Mars Ascent Vehicle", "MAV", "Ascend into low orbit");
+let hermes = new Ship("Hermes", "Main Ship", "Interplanetary Space Travel");
+
+crewMember1.enterShip(mav)
+crewMember2.enterShip(hermes)
+
+
+
 
 //tests
 if (typeof describe === 'function'){
