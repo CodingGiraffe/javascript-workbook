@@ -56,19 +56,19 @@ function generateHint(guess) {
   function mastermind(guess) {
   // solution = "abcd"; // Comment this out to generate a random solution
   if (guess == solution) {
-  board = [];
-  return "You guessed it!";
-  } else {
+    board = [];
+      return "You guessed it!";
+    } else {
   let hint = generateHint(guess);
-  board.push(guess + hint);
+    board.push(guess + hint);
   //only allow 10 tries
-  if (board.length >= 10) {
-  board = [];
-  return "You ran out of turns! The soultion was: " + solution;
-  } else {
-  return "Guess again.";
-  }
-  }
+    if (board.length >= 10) {
+     board = [];
+    return "You ran out of turns! The soultion was: " + solution;
+    } else {
+    return "Guess again.";
+      }
+    }
   }
 
 
