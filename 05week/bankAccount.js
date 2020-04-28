@@ -9,17 +9,14 @@ class BankAccount {
     }
 
     balance() {
-        for(let i = 0; i < this.transactions.length; i++){
-        this.accountBalance += this.transactions[i] 
-        return this.transactions
+        return this.accountBalance
     }
-}
+
 
 
     deposit(amt) {
-        this.accountBalance = this.accountBalance + amt
-
         if (amt > 0) {
+        this.accountBalance = this.accountBalance + amt
         return this.transactions.push(this.accountBalance);
         } else (amt < 0)
         return false
@@ -27,6 +24,7 @@ class BankAccount {
 
     charge(payee, amt) {
         if (amt < this.accountBalance) {
+        this.accountBalance = this.accountBalance - amt
         return this.transactions.push(payee, amt)
         } else (amt > this.accountBalance)
         return false
