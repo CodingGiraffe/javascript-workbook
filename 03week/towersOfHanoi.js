@@ -24,59 +24,98 @@ function movePiece(startStack, endStack) {
 
 
 //this takes the last/top piece off of the called stack
-let playingPiece = stacks[startStack].pop();
+let element = stacks[startStack].pop()
 
 //this adds the piece to the "top" of the end stack
-stacks[endStack].push(playingPiece);
+stacks[endStack].push(element)
 }
 
 //will check to see if a move is legal and will return if a move is legal
 //startStack the stack name to move the peice from
 //endStack the stack name to move the peice to
 function isLegal(startStack, endStack) {
+    //check to see if inputs are not null / undefined
+    if(!startStack || !endStack) {
+      return false
+    }
   
-  //set inputs
-
-  //this is the last piece from the start stack
-  let fromStack = [stacks[startStack].length-1]
-
-  //this is the the stack the piece is moving to
-  let toStack = stacks[endStack]
-
-  //compare last/top number from start stack to last/top number on end stack
-  if (fromStack > 0 && toStack.length == 0) {
-    movePiece(startStack, endStack)
-    console.log("Legal Move!")
-    return true
-  } else {
-    console.log("Illegal Move!")
+    startStack = startStack.trim().toLowerCase()
+    endStack = endStack.trim().toLowerCase()
+    
+    let startArray = stacks[startStack]
+    let endArray = stacks[endStack]
+  
+    if(!startArray) {
+      return false
+    }
+  
+    if(!endArray) {
+      return false
+    }
+  
+    if(startArray.length === 0) {
+      return false
+    }
+  
+    if(endArray.length === 0) {
+      return true
+    }
+  
+    //get the last element from start stack and end stack
+    //check to see if last element in start stack is greater than end stack
+  
+    let lastStart = startArray[startArray.length-1]
+    let lastEnd = endArray[endArray.length-1]
+  
+    if (lastStart < lastEnd) {
+      return true
+    }
+  
     return false
   }
-}
 
 //check to see if board is in a winning state and if so return true
 function checkForWin() {
-  //if either stack b or stack c have four pieces then the game is over and user has won
-  if(stacks.b.length == 4 || stacks.c == 4) {
-    console.log("You're a winner!!")
-    return true
-  } else {
-    //the stack requirements have not been met and user must continue 
-    console.log("Keep Trying")
-    return false
-  }
+ //we are making a string of all elements in b to see if they are the winning combo
+
+ if(stacks.b.join('') === '4321') {
+   return true
+ }
+
+ //same for c
+ if(stacks.c.join('') === '4321') {
+  return true
 }
- 
+  return false
+}
 //this is how you play the game
 //should check if the user input is valid
 //puts all the pieces together 
 function towersOfHanoi(startStack, endStack) {
-  //this takes the users inputs and checks to see if they are legal and valid
-  isLegal(startStack, endStack);
-  //this checks to see if the user has won the game
-  checkForWin()
-}
+  startStack = startStack.trim().toLowerCase()
+  endStack = endStack.trim().toLowerCase()
+    
+  let startArray = stacks[startStack]
+  let endArray = stacks[endStack]
 
+  if(!startArray || !endArray) {
+    return
+  }
+
+  //check if the move is legal
+  //if it is, make the move
+  //otherwise let them know it was a bad move
+
+  if(isLegal(startStack, endStack)) {
+    movePiece(startStack, endStack)
+  } else {
+    console.log("The move you entered is not legal")
+  }
+
+  if(checkForWin()) {
+    console.log("You won!")
+  }
+}
 
 function getPrompt() {
   printStacks();
@@ -107,6 +146,30 @@ if (typeof describe === 'function') {
       };
       assert.equal(isLegal('a', 'b'), false);
     });
+    it('should not allow an illegal move', () => {
+      stacks = {
+        a: [4, 3, 2],
+        b: [1],
+        c: []
+      };
+      assert.equal(isLegal('X', 'b'), false);
+    });
+    it('should not allow an illegal move', () => {
+      stacks = {
+        a: [4, 3, 2],
+        b: [1],
+        c: []
+      };
+      assert.equal(isLegal('A', 'b'), false);
+    });
+    it('should not allow an illegal move', () => {
+      stacks = {
+        a: [4, 3, 2],
+        b: [1],
+        c: []
+      };
+      assert.equal(isLegal('', 'b'), false);
+    });
     it('should allow a legal move', () => {
       stacks = {
         a: [4, 3, 2, 1],
@@ -114,6 +177,14 @@ if (typeof describe === 'function') {
         c: []
       };
       assert.equal(isLegal('a', 'c'), true);
+    });
+    it('should allow a legal move', () => {
+      stacks = {
+        a: [4, 1],
+        b: [3, 2],
+        c: []
+      };
+      assert.equal(isLegal('a', 'b'), true);
     });
   });
   describe('#checkForWin()', () => {
