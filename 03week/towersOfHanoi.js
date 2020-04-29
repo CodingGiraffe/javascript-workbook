@@ -20,11 +20,46 @@ function printStacks() {
 }
 
 function movePiece(startStack, endStack) { 
-  
-//need to pop it from one and push it to another  
 
-let playingPiece = stacks[startStack].pop();
-stacks[endStack].push(playingPiece);
+  //check to see if inputs are not null / undefined
+  if(!startStack || !endStack) {
+    return false
+  }
+
+  startStack = startStack.trim().toLowerCase()
+  endStack = endStack.trim().toLowerCase()
+  
+  let startArray = stacks[startStack]
+  let endArray = stacks[endstack]
+
+  if(!startArray) {
+    return false
+  }
+
+  if(!endArray) {
+    return false
+  }
+
+  if(startArray.length === 0) {
+    return false
+  }
+
+  if(endArray.length === 0) {
+    return true
+  }
+
+  //get the last element from start stack and end stack
+  //check to see if last element in start stack is greater than end stack
+
+  let lastStart = startArray[startArray.length-1]
+  let lastEnd = endArray[endArray.length-1]
+
+  if (lastStart < lastEnd) {
+    return true
+  }
+
+  return false
+
 }
 
 function isLegal(startStack, endStack) {
