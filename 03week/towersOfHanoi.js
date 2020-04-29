@@ -18,10 +18,10 @@ function printStacks() {
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
-
+//this will change the state of the board
+//need to pop it from one and push it to another 
 function movePiece(startStack, endStack) { 
-  
-//need to pop it from one and push it to another  
+
 
 //this takes the last/top piece off of the called stack
 let playingPiece = stacks[startStack].pop();
@@ -30,6 +30,9 @@ let playingPiece = stacks[startStack].pop();
 stacks[endStack].push(playingPiece);
 }
 
+//will check to see if a move is legal and will return if a move is legal
+//startStack the stack name to move the peice from
+//endStack the stack name to move the peice to
 function isLegal(startStack, endStack) {
   
   //set inputs
@@ -51,6 +54,7 @@ function isLegal(startStack, endStack) {
   }
 }
 
+//check to see if board is in a winning state and if so return true
 function checkForWin() {
   //if either stack b or stack c have four pieces then the game is over and user has won
   if(stacks.b.length == 4 || stacks.c == 4) {
@@ -64,12 +68,15 @@ function checkForWin() {
 }
  
 //this is how you play the game
+//should check if the user input is valid
+//puts all the pieces together 
 function towersOfHanoi(startStack, endStack) {
-  //this takes the users inputs and checks to see if they are legal
+  //this takes the users inputs and checks to see if they are legal and valid
   isLegal(startStack, endStack);
   //this checks to see if the user has won the game
   checkForWin()
 }
+
 
 function getPrompt() {
   printStacks();
