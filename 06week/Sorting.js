@@ -12,7 +12,10 @@ const sumEvens = arrayToEvens.reduce((acc, curr) => acc + curr)
 console.log(sumEvens);
 
 // Find the index of the first value when added to it's index = 512 (#ATX!!)
-const atxIdx = stringsToNumbs.reduce((acc, curr) => acc + curr <= 512)
+const atxIdx = stringsToNumbs.reduce(function(acc, curr) {
+  if(acc + curr <= 512)
+  return curr
+}, 0)
 
 console.log(`index: ${atxIdx}, value: ${stringsToNumbs[atxIdx]}`);
 
@@ -91,4 +94,4 @@ console.log(weatherStates)
 //find the id of the object in weather that has a min_temp of 15.915
 
 const idealTemp = weather.find(el => (el.min_temp === 15.915))
-console.log(idealTemp)
+console.log(idealTemp.id)
