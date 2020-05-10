@@ -18,30 +18,33 @@ let getPosts = function() {
 
     dataPromise.then(function(data) {
         console.log("We have opened the packaging and the item/data is here! data =", data)
-        data.results.forEach(updateHtml)
+        processContact(data.results)
     })
     console.log("Request sent off...")
 }
 
-let updateHtml = function(post) {
-    console.log("Updating the HTML for posts = ", post)
-    let postsUl = document.getElementById("posts")
+function processContact(contacts) {
+    console.log("the contacts are =", contacts)
+    contacts.forEach(function(person) {
 
-    let postLi = document.createElement("li")
-    postLi.innerText = name.first
-    postsUl.appendChild(postLi)
+            console.log("Updating the HTML for posts = ", contacts, "this is inside the for each =", person)
+            let postsUl = document.getElementById("posts")
+        
+            let postLi = document.createElement("li")
+            postLi.innerText = person.name.first + " " + person.name.last
+            postsUl.appendChild(postLi)
+        
+            let userPic = person.picture.thumbnail
+            console.log(userPic)
+            let userPicSpan = document.createElement("span")
+            userPicSpan.innerText = "   - " + userPic
+            postLi.append(userPicSpan)
 
-    let userName = name.first + "" + name.last
-    console.log(userName)
-    let userNameSpan = document.createElement("span")
-    userNameSpan.innerText = "   - by " +userName
-    postLi.append(userNameSpan)
+            document.getElementById("info").addEventListener('click', function () {
+            let moreInfo = "Gender = " + person.gender + ", Age = " + person.dob.age + ", Email = " + person.email
+            console.log("adding more info =", moreInfo)
+            this.append(moreInfo)
+            })
 
-    fetch('https://randomuser.me/api/?results=10'+userName)
-    .then(function(response) {
-        return response.json()
-    })
-    .then(function(data) {
-        userNameSpan.innerText = "     - by"+data.results.name
-    })
-}
+        })
+    }
