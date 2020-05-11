@@ -41,9 +41,10 @@ function processContact(contacts) {
             postLi.append(userPicSpan)
 
             document.getElementById("info").addEventListener('click', function () {
-            let moreInfo = "Gender = " + person.gender + ", Age = " + person.dob.age + ", Email = " + person.email
-            console.log("adding more info =", moreInfo)
-            this.append(moreInfo)
+            let infoUl = document.getElementById("info")
+            let infoLi = document.createElement("li")
+            infoLi.innerText = "Name " + person.name.first + person.name.last + " Gender: " + person.gender + ", Age: " + person.dob.age + ", Email: " + person.email
+            infoUl.append(infoLi)
             })
 
         })
