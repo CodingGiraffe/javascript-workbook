@@ -1,0 +1,16 @@
+.team {
+    text-emphasis: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+#button {
+    font-size: 30px;
+    border-radius: 30%;
+}
+
+.main-container {
+    background-color: lightgoldenrodyellow;
+}

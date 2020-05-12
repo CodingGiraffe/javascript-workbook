@@ -4,25 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./Dodgeball.css">
   <title>Dodge Ball</title>
 </head>
 <body>
-  <div>
+  <div class="main-container">
+    <div class="top team">
       <h4>List Of People</h4>
       <ul id="people"></ul>
-  </div>
-  <button onclick="listPeopleChoices()">List People</button>
-  <div>
+    </div>
+    <div class = "button team">
+    <button id="button" onclick="listPeopleChoices()">List People</button>
+    </div>
+    <div class="db team">
       <h4>Dodge Ball Players</h4>
       <ul id="players"></ul>
-  </div>
-  <div>
+    </div>
+    <div class="blue team">
       <h4>Blue Team</h4>
       <ul id="blue"></ul>
-  </div>
-  <div>
+    </div>
+    <div class="red team">
       <h4>Red Team</h4>
       <ul id="red"></ul>
+    </div>
   </div>
   <script src='./dodgeBall.js'></script>
 </body>

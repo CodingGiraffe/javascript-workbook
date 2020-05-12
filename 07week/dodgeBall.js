@@ -71,18 +71,24 @@ const arrOfPeople = [
     }
 }
 
+//this function will will move players from players array to assigned team color
 const makeTeammate = (id, color) => {
   console.log(`make teammate: li ${id} was clicked`)
+  //identify element by id
   li = document.getElementById(id)
+  //remove child from parent node
   li.parentNode.removeChild(li)
 
   //loop through all the players and find player by id
   listOfPlayers.forEach((player) => {
+    //create a conditional to make teammate
       if(player.id == id) {
+        //create a new teammate instance 
           let newTeammate = new Teammate(player.id, player.name, player.age, color)
+          //add player to the correct team color array
           if(color == 'Red') {
               redTeam.push(newTeammate)
-          } else {
+          } else { 
               blueTeam.push(newTeammate)
           }
 
@@ -99,28 +105,74 @@ const makeTeammate = (id, color) => {
 
   //add teammate element to the dom
   const addTeammate = (teammate) => {
-    console.log(teammate)
+    console.log("my new teammate = " + teammate)
+    //make a variable to to get element by id
     const listElement = document.getElementById(teammate.color.toLowerCase())
+    //create an li to hold new teammates
     const li = document.createElement("li")
     li.id = teammate.id
+    //create text so information is readable for user
     li.appendChild(document.createTextNode(teammate.name + " - " + teammate.age+" years old"))
+    //attach information to the dom
     listElement.append(li)
 }
   
   //add player to the dom
   const addPlayer = (player) => {    
+      //we need to get the id from the dom for the players
       const listElement = document.getElementById('players')
+      //create a list items
       const li = document.createElement("li")
+      //make the li id equal to the player id
       li.id = player.id
+      //create a button for the red team
       const redButton = document.createElement("button")
+      //button needs to say "make red"
       redButton.innerHTML = "Make Red"
+      //when the red button is clicked it will invoke the makeTeammate function
       redButton.addEventListener('click', function () {makeTeammate(player.id, 'Red')} )
+      //add button to the dom
       li.appendChild(redButton)
-  
+      
+      //same thing with the blue button as red button
       const blueButton = document.createElement("button")
       blueButton.innerHTML = "Make Blue"
-      redButton.addEventListener('click', function () {makeTeammate(player.id, 'Blue')} )
+      blueButton.addEventListener('click', function () {makeTeammate(player.id, 'Blue')} )
       li.appendChild(blueButton)
+
+      //we need to add the information to the dom so it is user friendly, easy to read and understand
+      li.appendChild(document.createTextNode(player.name + " - " + player.age+" years old"))
+      //add information to dom
+      listElement.append(li)
+  }
+
+  //this function will take the people from the list of people array and add them to listOfPlayers array
+  const makePlayer = (id) => {
+    console.log(`li ${id} was clicked for makePlayer function`)
+    //we need to identify element by id
+      li = document.getElementById(id)
+      //remove child from parent node
+      li.parentNode.removeChild(li)
+
+      //now we need to loop through each person in the arrOfPeople 
+      arrOfPeople.forEach((person) => {
+        //get info from the arrayOfPeople
+          if(person.id == id) {
+              //create an instance to gather information
+              let newPlayer = new Player(person.id, person.name, person.age)
+              //add Player to listOfPlayers array 
+              listOfPlayers.push(newPlayer)
+              //this log is showing objects added to the array listOfPlayers
+              console.log(`here is the list of player ${listOfPlayers}`)
+              //now put each player in teh listOfPlayers array in the addPlayer function
+              addPlayer(newPlayer)
+          }
+      })
+
+      //remove player from List of People
+      arrOfPeople.filter ((person) => {
+          person.id != id
+      })
   }
 
   //this function will add people from the arrOfPeople to the dom by clicking the list people button by using an onclick method 
@@ -133,6 +185,7 @@ const makeTeammate = (id, color) => {
         const li = document.createElement("li")
         //this will identify each person by their id
         li.id = person.id
+        console.log("the persons id = " + person.id)
         //now we need to create a button to move players from people list to player list
         const button = document.createElement('button')
         //this button will need to say "make player"
@@ -149,26 +202,4 @@ const makeTeammate = (id, color) => {
     })
 }
 
-   //this function will take the people from the list of people array and add them to players array
-   const makePlayer = (id) => {
-    console.log(`li ${id} was clicked for makePlayer function`)
-    //we need to identify each person on the list by id
-      li = document.getElementById(id)
-      //and remove the people from the arrOfPeoploe 
-      li.parentNode.removeChild(li)
-
-      //now we need to loop through each person in the arrOfPeople 
-      arrOfPeople.forEach((person) => {
-          if(person.id == id) {
-              let newPlayer = new Player(person.id, person.name, person.age)
-              //add Player to listOfPlayers array 
-              listOfPlayers.push(newPlayer)
-              
-              console.log(`here is the list of player ${listOfPlayers}`)
-              addPlayer(newPlayer)
-          }
-      })
-      arrOfPeople.filter ((person) => {
-          person.id != id
-      })
-  }
+  
