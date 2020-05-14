@@ -36,7 +36,6 @@ function processContact(contacts) {
         
             let userPic = document.createElement("img")
             console.log(userPic)
-            userPic.classList.add("thumbnail")
             userPic.setAttribute("src", person.picture.thumbnail)
             postsUl.appendChild(userPic)
 

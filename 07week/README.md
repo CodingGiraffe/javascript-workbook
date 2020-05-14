@@ -43,3 +43,16 @@
 
 
 :::::TESTS:::::
+
+// Should list players that are eligable to play dodgeball when player list is clicked.
+// Players should at least display name and skillSet attributes when list of players is generated.
+// Each player should be assigned a button in order to be selected into the draft.
+// Player should move from arrOfPeople to listOfPlayers && once selected be removed from listOfPlayers.
+
+// Player should be added to a new list in order to be assigned a team.
+// Player should be assigned a "Red Team" && "Blue Team" button.
+
+// Once player is a assigned a team, Player should be removed from new list and moved to the selected team list.
+// Each team should have its own list to be assigned to.
+// Player should display a statement that they have been picked to that team.
+// Text should be changed to the color of their team.

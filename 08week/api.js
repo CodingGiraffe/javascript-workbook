@@ -4,10 +4,10 @@ console.log("loading script.js file")
 
 window.onload = function() {
     console.log("window loaded")
-    getPosts()
+    getJokes()
 }
 
-let getPosts = function() {
+let getJokes = function() {
     console.log("Inside the post method, about to make a fetch request")
     let fetchPromise = fetch('https://api.chucknorris.io/jokes/random')
 
@@ -18,20 +18,24 @@ let getPosts = function() {
 
     dataPromise.then(function(data) {
         console.log("We have opened the packaging and the item/data is here! data =", data)
-        processContact(data)
+        processInfo(data)
     })
     console.log("Request sent off...")
 }
 
-function processContact(joke) {
-    console.log("the contacts are =", joke)
+function processInfo(jokeInfo) {
+    console.log("the contacts are =", jokeInfo)
 
     let postsUl = document.getElementById("posts")
     let chuckJokes = document.createElement("h2")
 
-    chuckJokes.innerText = joke.value
+    chuckJokes.innerText = jokeInfo.value
     console.log(chuckJokes)
     postsUl.appendChild(chuckJokes)
+
+    let chuckPic = document.createElement("img")
+    chuckPic.setAttribute("src", jokeInfo.icon_url)
+    postsUl.appendChild(chuckPic)
 }
 
     
