@@ -1,0 +1,12 @@
+{"results":[
+    {"gender":"female",
+    "name":{"title":"Miss","first":"Aurora","last":"White"},
+    "location":{"street":{"number":9806,"name":"Brockville Road"},"city":"Whanganui","state":"Wellington","country":"New Zealand","postcode":66370,"coordinates":{"latitude":"67.7248","longitude":"150.2741"},"timezone":{"offset":"-6:00","description":"Central Time (US & Canada), Mexico City"}},
+    "email":"aurora.white@example.com",
+    "login":{"uuid":"2d53f1ee-a198-40b9-935b-4ea9dd10dc62","username":"sadfish942","password":"emilio","salt":"hLIdTJ1l","md5":"750577cd73731dbffbcf5dcfbdf3151a","sha1":"386c45cb2b2706b6728b96accea52b0ec940d718","sha256":"ab3478e9c17c897f596705f9f810513f3a654f05c3abd07f87dc89bd85f393fd"},
+    "dob":{"date":"1980-11-22T01:36:53.103Z","age":40},
+    "registered":{"date":"2012-03-31T22:59:01.318Z","age":8},
+    "phone":"(800)-874-1872",
+    "cell":"(753)-729-9408",
+    "id":{"name":"","value":null},
+    "picture":{"large":"https://randomuser.me/api/portraits/women/82.jpg","medium":"https://randomuser.me/api/portraits/med/women/82.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/82.jpg"},"nat":"NZ"}
